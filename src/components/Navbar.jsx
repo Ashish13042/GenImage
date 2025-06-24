@@ -1,12 +1,18 @@
-import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+
+
+
 const Navbar = () => {
-  // State to manage user authentication status
-  const [user, setUser] = useState(true);
+
+  const {user, setShowLogin} = useContext(AppContext);
+
 
   const navigate = useNavigate();
+
 
   return (
     <div className="flex items-center justify-between py-4">
@@ -17,7 +23,7 @@ const Navbar = () => {
       <div>
         {user ? (
           <div className="flex items-center gap-4 sm:gap-3">
-            <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full transition-all duration-300 cursor-pointer hover:scale-125 transform">
+            <button onClick={()=>('/buy')} className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full transition-all duration-300 cursor-pointer hover:scale-125 transform">
               <img className="w-5" src={assets.credit_star} />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 Credits left : 50
@@ -35,10 +41,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-2 sm:gap-5">
-            <p onClick={() => navigate("/buy")} className="cursor-pointer">
+            <p onClick={() => navigate("/buy")} className="hover:scale-105 transition-all dusration-500 cursor-pointer">
               Pricing
             </p>
-            <button className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full cursor-pointer">
+            <button onClick={()=>setShowLogin(true)} className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full hover:scale-105 transition-all dusration-500 cursor-pointer">
               Login
             </button>
           </div>

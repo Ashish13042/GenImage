@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-
-
+*{
+    font-family: Outfit, Arial, Helvetica, sans-serif;
+}
+.placeholder-color{
+    color: #e0e0e0;
+    font-weight: 300;
+}
