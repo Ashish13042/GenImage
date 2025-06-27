@@ -26,7 +26,7 @@ const Navbar = () => {
             <button onClick={()=>('/buy')} className="flex items-center gap-2 bg-blue-200 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full transition-all duration-300">
               <img className="w-5" src={assets.credit_star} />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
-                Credits left : {credit}
+                Credits left: {credit}
               </p>
             </button>
             <p className="text-gray-600 max-sm:hidden pl-4">Hi, {user.name}</p>

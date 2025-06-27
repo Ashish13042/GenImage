@@ -18,35 +18,30 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      let data;
       if (state === "Sign In") {
-        const { data } = await axios.post(backendUrl + "/api/user/login", {
+        const res = await axios.post(`${backendUrl}/api/user/login`, {
           email,
           password,
         });
-
-        if (data.success) {
-          setToken(data.token);
-          setUser(data.user);
-          localStorage.setItem("token", data.token);
-          setShowLogin(false);
-        } else {
-          toast.error(data.message);
-        }
-      }else{
-         const { data } = await axios.post(backendUrl + "/api/user/register", {
+        data = res.data;
+      } else {
+        const res = await axios.post(`${backendUrl}/api/user/register`, {
           name,
           email,
           password,
         });
+        data = res.data;
+      }
 
-        if (data.success) {
-          setToken(data.token);
-          setUser(data.user);
-          localStorage.setItem("token", data.token);
-          setShowLogin(false);
-        } else {
-          toast.error(data.message);
-        }
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+        setUser(data.user);
+        setShowLogin(false);
+        toast.success(`${state} successful!`);
+      } else {
+        toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
@@ -55,7 +50,6 @@ const Login = () => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-
     return () => {
       document.body.style.overflow = "unset";
     };
