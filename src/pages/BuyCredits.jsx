@@ -14,7 +14,7 @@ const BuyCredits = () => {
       viewport={{ once: true }}
       className="min-h-[90vh] text-center pt-14 mb-10"
     >
-      <button className="border border-gray-400 px-10 py-2 rounded-full mb-6 hover:scale-105 transition-all dusration-500 cursor-pointer">
+      <button className="border border-gray-400 px-10 py-2 rounded-full mb-6">
         Our Plans
       </button>
       <h1 className="text-center text-3xl font-medium mb-6 sm:mb-10">
@@ -40,6 +40,10 @@ const BuyCredits = () => {
           </div>
         ))}
       </div>
+      <br></br>
+      <p className="text-center text-sm text-gray-500">
+        This website is for learning purposes only. Payments are not active.
+      </p>
     </motion.div>
   );
 };

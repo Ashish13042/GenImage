@@ -1,5 +1,5 @@
 import { assets } from "../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../index.css";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
@@ -11,6 +11,7 @@ const Navbar = () => {
   const {user, setShowLogin, logout, credit} = useContext(AppContext);
 
 
+  const location = useLocation();
   const navigate = useNavigate();
 
 
@@ -41,9 +42,11 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-2 sm:gap-5">
-            <p onClick={() => navigate("/buy")} className="hover:scale-105 transition-all dusration-500 cursor-pointer">
+           {location.pathname !== "/buy" && (
+            <p onClick={() => navigate("/buy")} className="hover:scale-105 transition-all dusration-500 cursor-pointer" >
               Pricing
             </p>
+           )}
             <button onClick={()=>setShowLogin(true)} className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full hover:scale-105 transition-all dusration-500 cursor-pointer">
               Login
             </button>
